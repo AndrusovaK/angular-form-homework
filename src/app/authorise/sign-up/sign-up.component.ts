@@ -8,7 +8,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 })
 export class SignUpComponent {
 
-  private signUpForm: FormGroup;
+  public signUpForm: FormGroup;
+  public formHasErrors = false;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -21,5 +22,16 @@ export class SignUpComponent {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  onSubmit() {
+    if (this.signUpForm.invalid) {
+      this.formHasErrors = true;
+      return;
+    }
+
+    this.signUpForm.reset();
+    this.formHasErrors = false;
+    console.log('sign up!');
   }
 }

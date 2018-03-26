@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class LogInComponent {
 
-  private loginForm: FormGroup;
+  public loginForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -19,6 +19,10 @@ export class LogInComponent {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  onSubmit() {
+    console.log('log in!');
   }
 
 }

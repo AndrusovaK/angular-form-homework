@@ -48,6 +48,12 @@
 .field-wrap {
 	position:relative;
 	margin-bottom:40px;
+
+	&.is-error {
+		input, textarea {
+			border-color: red;
+		}
+	}
 }
 
 .top-row {

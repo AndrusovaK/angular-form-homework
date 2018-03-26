@@ -1,36 +1,40 @@
 <div id="signup">
   <h1>Sign Up for Free</h1>
 
-  <form [formGroup]="signUpForm">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
 
     <div class="top-row">
-      <div class="field-wrap">
+      <div class="field-wrap"
+           [ngClass]="{'is-error': signUpForm.get('firstName').status === 'INVALID' && formHasErrors}">
         <label [ngClass]="{active: signUpForm.get('firstName').value}">
           First Name<span class="req">*</span>
         </label>
-        <input type="text" autocomplete="off" formControlName="firstName"/>
+        <input type="text" formControlName="firstName"/>
       </div>
 
-      <div class="field-wrap">
+      <div class="field-wrap"
+           [ngClass]="{'is-error': signUpForm.get('lastName').status === 'INVALID' && formHasErrors}">
         <label [ngClass]="{active: signUpForm.get('lastName').value}">
           Last Name<span class="req">*</span>
         </label>
-        <input type="text" autocomplete="off" formControlName="lastName"/>
+        <input type="text" formControlName="lastName"/>
       </div>
     </div>
 
-    <div class="field-wrap">
+    <div class="field-wrap"
+         [ngClass]="{'is-error': signUpForm.get('email').status === 'INVALID' && formHasErrors}">
       <label [ngClass]="{active: signUpForm.get('email').value}">
         Email Address<span class="req">*</span>
       </label>
-      <input type="email" autocomplete="off" formControlName="email"/>
+      <input type="email" formControlName="email"/>
     </div>
 
-    <div class="field-wrap">
+    <div class="field-wrap"
+         [ngClass]="{'is-error': signUpForm.get('password').status === 'INVALID' && formHasErrors}">
       <label for="password" [ngClass]="{active: signUpForm.get('password').value}">
         Set A Password<span class="req">*</span>
       </label>
-      <input type="password" id="password" autocomplete="off" formControlName="password"/>
+      <input type="password" id="password" formControlName="password"/>
     </div>
 
     <button type="submit" class="button button-block">Get Started</button>
